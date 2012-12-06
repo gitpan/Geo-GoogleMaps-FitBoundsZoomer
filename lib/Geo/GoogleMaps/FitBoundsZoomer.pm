@@ -5,7 +5,7 @@ use 5.10.0;
 use strict;
 use warnings;
 
-our $VERSION = '1.00';
+our $VERSION = '1.01';
 
 use Carp;
 use List::Util qw(min max);
@@ -265,7 +265,7 @@ Big thanks to Alex Timoshenko.
 
 =head1 AUTHOR
 
-Copyright 2012, Michael Portnoy E<lt>mport@cpan.org<gt>. All rights reserved.
+Copyright 2012, Michael Portnoy E<lt>mport@cpan.orgE<gt>. All rights reserved.
 
 This program is free software; you can redistribute it and/or modify it
 under the same terms as Perl itself.

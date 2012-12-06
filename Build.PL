@@ -7,7 +7,9 @@ use Module::Build 0.3601;
 
 my %module_build_args = (
   "build_requires" => {
-    "Module::Build" => "0.3601"
+    "Module::Build" => "0.3601",
+    "Test::Exception" => 0,
+    "Test::More" => 0
   },
   "configure_requires" => {
     "Module::Build" => "0.3601"
@@ -17,7 +19,7 @@ my %module_build_args = (
     "Michael Portnoy <mport\@cpan.org>"
   ],
   "dist_name" => "Geo-GoogleMaps-FitBoundsZoomer",
-  "dist_version" => "1.00",
+  "dist_version" => "1.01",
   "license" => "perl",
   "module_name" => "Geo::GoogleMaps::FitBoundsZoomer",
   "recommends" => {},
