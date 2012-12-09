@@ -19,7 +19,7 @@ my %module_build_args = (
     "Michael Portnoy <mport\@cpan.org>"
   ],
   "dist_name" => "Geo-GoogleMaps-FitBoundsZoomer",
-  "dist_version" => "1.01",
+  "dist_version" => "1.02",
   "license" => "perl",
   "module_name" => "Geo::GoogleMaps::FitBoundsZoomer",
   "recommends" => {},

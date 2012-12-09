@@ -1,7 +1,7 @@
 
 
 This archive contains the distribution Geo-GoogleMaps-FitBoundsZoomer,
-version 1.01:
+version 1.02:
 
   Calculates the maximum Google Maps zoom which fits the minimum bounding rectangle of Google Map points.
 
