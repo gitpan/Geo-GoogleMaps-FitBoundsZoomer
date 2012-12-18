@@ -2,9 +2,12 @@ use 5.10.0;
 use strict;
 use warnings;
 
-use Test::More tests => 43;
+use Test::More tests => 49;
 use Test::Exception;
+
 use Geo::GoogleMaps::FitBoundsZoomer;
+
+use constant PRECISION_DELTA =>  0.00001; # care to ~ 1m precision
 
 # the zoom levels and coordinates were aquired by using GoogleMaps API.
 my @max_google_zoom_test_data = (
@@ -239,9 +242,13 @@ is (
 is ($zoomer->max_bounding_zoom(), 19, 'max_bounding_zoom getter test');
 
 # getter test (no params) bounding_box_center
-is_deeply ( $zoomer->bounding_box_center(), 
-            { lat => 43.7143912071944, long => -79.385431321928 }, 
-            'bounding_box_center: getter test');
+my $bb_center = $zoomer->bounding_box_center();
+ok ( $bb_center->{lat}  > 0 , 'bounding_box_center: getter test - lat positive' ); 
+ok ( $bb_center->{long} < 0 , 'bounding_box_center: getter test - long negative');
+
+ok ( (abs ( $bb_center->{lat} )  - 43.7143912071944) < PRECISION_DELTA , 'bounding_box_center: getter test - lat precision delta');
+ok ( (abs ( $bb_center->{long} ) - 79.385431321928)  < PRECISION_DELTA , 'bounding_box_center: getter test - long precision delta');
+
 
 # update map parameters for existing instance using max_bounding_zoom
 $test_case =  {
@@ -270,9 +277,13 @@ is ( $zoomer->max_bounding_zoom(
 
 
 # retest getter (no params) bounding_box_center
-is_deeply ( $zoomer->bounding_box_center(), 
-            { lat => 53.5619529436902, long => -113.52795249469 }, 
-            'bounding_box_center: retest getter following param update');
+$bb_center = $zoomer->bounding_box_center();
+ok ( $bb_center->{lat}  > 0 , 'bounding_box_center: retest getter following param update - lat positive' );
+ok ( $bb_center->{long} < 0 , 'bounding_box_center: retest getter following param update - long negative');
+
+ok ( (abs ( $bb_center->{lat} )  - 53.5619529436902)  < PRECISION_DELTA , 'bounding_box_center: retest getter following param update - lat precision delta');
+ok ( (abs ( $bb_center->{long} ) - 113.52795249469 )  < PRECISION_DELTA , 'bounding_box_center: retest getter following param update - long precision delta');
+
 
 # update with middle-earth point
 $test_case = {

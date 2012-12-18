@@ -1,5 +1,10 @@
 Revision history for Geo::GoogleMaps::FitBoundsZoomer
 
+1.03    Mon Dec 17 19:55:55 EST 2012
+        - Reverts precision restrictions made in 1.02 and updates tests to
+          check `bounding_box_center` precision delta to fix insufficient rounding 
+          issues.
+
 1.02    Sun Dec  9 18:06:32 EST 2012
         - Restricts `bounding_box_center` return precision
 

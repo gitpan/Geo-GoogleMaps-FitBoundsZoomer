@@ -5,7 +5,7 @@ use 5.10.0;
 use strict;
 use warnings;
 
-our $VERSION = '1.02';
+our $VERSION = '1.03';
 
 use Carp;
 use List::Util qw(min max);
@@ -78,8 +78,8 @@ sub bounding_box_center {
 
         my ($blp, $trp) = ($bounds->{blp}, $bounds->{trp});
 
-        $center->{lat}  = 0.0 + sprintf( '%.13f', ( ($trp->{lat}  - $blp->{lat})  / 2) + $blp->{lat}  );
-        $center->{long} = 0.0 + sprintf( '%.13f', ( ($trp->{long} - $blp->{long}) / 2) + $blp->{long} );
+        $center->{lat}  = ( ($trp->{lat}  - $blp->{lat})  / 2 ) + $blp->{lat};
+        $center->{long} = ( ($trp->{long} - $blp->{long}) / 2 ) + $blp->{long};
 
         $self->{map_center} = $center;
     }
